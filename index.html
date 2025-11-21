@@ -1,141 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/sbr-rodrigues/Jogo-da-forca---HANGMAN/refs/heads/main/media/icon%20hangman.png">
-  <title>Jogo da Forca - Hangman</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jogo da Forca - HANGMAN</title>
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+    body{
+      min-height:100vh;
+      background: rgba(200, 200, 200, 0.12);
+      color:white;
+      display:flex;
+      justify-content:center;
+      padding:20px;
     }
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background-image: url("");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+    .container{
+      width:100%;
+      max-width:1100px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius:16px;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
     }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      justify-content: space-between;
-      color: white;
-    }
-
-    header {
-      text-align: center;
-      background: rgba(250, 151, 4, 0.8);
-      padding: 15px 0;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    header h1 {
-      font-size: 3em;
-      letter-spacing: 2px;
-    }
-
-    header p {
-      font-size: 1.3em;
-      margin-top: 5px;
-    }
-
-    main {
-      display: flex;
-      justify-content: space-around;
-      align-items: stretch;
-      flex: 1;
-      padding: 20px;
-      gap: 10px;
-    }
-
-    .right {
-      flex: 1;
-      background-color: rgba(255, 165, 0, 0.8);
-      border-radius: 20px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center; /* Centraliza verticalmente */
-      align-items: center;     /* Centraliza horizontalmente */
-      text-align: center;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-    }
-
-    .left {
-      flex: 1;
-      background-color: rgba(255, 165, 0, 0.8);
-      border-radius: 20px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center; /* Centraliza verticalmente */
-      align-items: center;     /* Centraliza horizontalmente */
-      text-align: center;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-    }
-
-    .left p {
-      font-size: 1.2em;
-    }
-
-    h2 {
-      margin-bottom: 10px;
-      color: #fff;
-      text-align: center;
-      font-size: 2em; /* Título maior */
-      margin-bottom: 15px;
-    }
-    
-    .jogo p {
-      margin: 5px 0;
-      text-align: center;
-      font-weight: 500;
-    }
-
-    button {
-      background-color: #ff7675;
-      color: #fff;
-      border: none;
-      font-size: 1.2em;
-      padding: 15px 30px;
-      margin: 5px;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background-color: #ff5555;
-    }
-
-    .resultado {
-      text-align: center;
-      font-weight: bold;
-      margin-top: 15px;
-      color: #ffdd57;
-      font-size: 1.3em;
-    }
-
-    footer {
-      text-align: center;
-      background: rgba(250, 151, 4, 0.8);
-      padding: 10px 0;
-      font-weight: 500;
-      font-size: 1em;
-      letter-spacing: 1px;
-      box-shadow: 0 -4px 8px rgba(0,0,0,0.2);
-    }
-
- #bg-video {
+    #bg-video {
   position: fixed;
   top: 0;
   left: 0;
@@ -144,249 +35,446 @@
   z-index: -1;
   object-fit: cover;
 }
-
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.7);
-      justify-content: center;
-      align-items: center;
-      animation: fadeIn 0.5s ease;
+    header{
+      background: rgba(120, 120, 120, 0.12);
+      padding:18px;
+      text-align:center;
     }
 
-    .modal-content {
-      background-color: #222;
-      color: white;
-      padding: 30px;
-      border-radius: 10px;
-      text-align: center;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    main{
+      display:flex;
+      gap:18px;
+      padding:18px;
     }
 
-    .modal-content h2 {
-      color: #ffdd57;
-      margin-bottom: 20px;
+    .left{
+      flex:1;
+      background: rgba(200, 200, 200, 0.12);
+      border-radius:12px;
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:12px;
     }
 
-    .modal button {
-      background-color: #ff6f61;
-      margin: 10px;
+    .cats{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+
+    .cats button{
+      background:#ff7675;
+      border:none;
+      padding:10px 14px;
+      border-radius:10px;
+      color:white;
+      cursor:pointer;
+      font-weight:600;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .word{
+      margin-top:12px;
+      font-size:1.8rem;
+      letter-spacing:8px;
+      font-weight:700;
+      text-align:center;
     }
 
-    #mensagemFinal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      color: white;
-      font-size: 2em;
-      text-align: center;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      animation: fadeIn 1s ease;
+    #chancesInfo{
+      color:rgba(200,200,200,0.6);
+      font-weight:600;
     }
+
+    #letrasTentadas{
+      margin-top:4px;
+      color:rgba(220,220,220,0.5);
+    }
+
+    .input-row{
+      display:flex;
+      gap:8px;
+      margin-top:12px;
+    }
+
+    input{
+      padding:10px;
+      border:none;
+      border-radius:8px;
+      width:140px;
+      text-align:center;
+      font-size:1rem;
+      text-transform:uppercase;
+    }
+
+    .input-row button{
+      background:#2ea043;
+      border:none;
+      border-radius:8px;
+      padding:10px 14px;
+      color:white;
+      cursor:pointer;
+      font-weight:600;
+    }
+
+    .result{
+      min-height:30px;
+      text-align:center;
+      color:rgba(210,210,210,0.7);
+      margin-top:8px;
+    }
+
+    .right{
+      flex:1;
+      background: rgba(200, 200, 200, 0.12);
+      border-radius:12px;
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .forca-area{
+      width:100%;
+      max-width:360px;
+      height:300px;
+      display:flex;
+      justify-content:center;
+      position:relative;
+    }
+
+    .gallows{width:180px;height:260px;position:relative;}
+
+    .poste{
+      position:absolute;left:10px;top:0;
+      width:8px;height:260px;background:#cbbf9f;border-radius:5px;
+    }
+
+    .trave{
+      position:absolute;left:10px;top:0;
+      width:120px;height:8px;background:#cbbf9f;border-radius:5px;
+    }
+
+    .corda{
+      position:absolute;left:130px;top:8px;
+      width:3px;height:26px;background:#9b7b4a;
+    }
+
+    .part{
+      opacity:0;
+      transition:.2s;
+      position:absolute;
+      left:120px;
+    }
+
+    .show{opacity:1;}
+
+    /* Container da forca */
+#forca {
+  position: relative;
+  width: 250px;
+  height: 350px;
+}
+
+/* Cabeça */
+.head {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #e6e6e6;
+  border-radius: 50%;
+  position: absolute;
+  top: 60px;
+  left: 98px;
+  display: none;
+}
+
+/* Corpo */
+.body {
+  width: 4px;
+  height: 90px;
+  background: #e6e6e6;
+  position: absolute;
+  top: 110px;
+  left: 122px;
+  display: none;
+}
+
+/* Braço esquerdo */
+.left-arm {
+  width: 60px;
+  height: 4px;
+  background: #e6e6e6;
+  position: absolute;
+  top: 145px;
+  left: 65px;
+  transform: rotate(-25deg);
+  transform-origin: right;
+  display: none;
+}
+
+/* Braço direito */
+.right-arm {
+  width: 60px;
+  height: 4px;
+  background: #e6e6e6;
+  position: absolute;
+  top: 145px;
+  left: 122px;
+  transform: rotate(25deg);
+  transform-origin: left;
+  display: none;
+}
+
+/* Perna esquerda */
+.left-leg {
+  width: 60px;
+  height: 4px;
+  background: #e6e6e6;
+  position: absolute;
+  top: 220px;
+  left: 68px;
+  transform: rotate(30deg);
+  transform-origin: right;
+  display: none;
+}
+
+/* Perna direita */
+.right-leg {
+  width: 60px;
+  height: 4px;
+  background: #e6e6e6;
+  position: absolute;
+  top: 220px;
+  left: 122px;
+  transform: rotate(-30deg);
+  transform-origin: left;
+  display: none;
+}
+    .recomecar{
+      margin-top:16px;
+      background:#ff7675;
+      border:none;
+      padding:10px 14px;
+      border-radius:10px;
+      color:white;
+      cursor:pointer;
+      font-weight:600;
+    }
+
+    /* modal */
+    .modal{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.7);
+      align-items:center;
+      justify-content:center;
+    }
+
+    .modal .card{
+      background:#222;
+      padding:22px;
+      border-radius:12px;
+      text-align:center;
+      width:320px;
+    }
+
+    .modal button{
+      margin-top:12px;
+      padding:10px 14px;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+      background:#2ea043;
+      color:white;
+    }
+    .modal-buttons {
+  display: flex;
+  gap: 10px;
+}
   </style>
 </head>
 <body>
-    <video id="bg-video" autoplay muted loop playsinline>
-  <source src="media/jack.mp4" type="video/mp4">
+  <video id="bg-video" autoplay muted loop playsinline>
+  <source src="media/papel.mp4" type="video/mp4">
 </video>
-  <div class="container">
-    <header>
-      <h1><strong>Jogo da Forca - HANGMAN</strong></h1>
-      <p>Bem-vindos a forca</p>
-    </header>
+<div class="container">
 
-    <main>
-      <div class="left">
-        
-        <button class="jogada" onclick="categoria(1)">🚗Carro</button>
-          <button class="jogada" onclick="categoria(2)">🎥Filme</button>
-          <button class="jogada" onclick="categoria(3)">🍒Fruta</button>
-          <button class="jogada" onclick="categoria(4)">👗Roupa</button>
-          <div id="resultado" class="resultado"></div>
-          <br>
-      </div>
+<header>
+  <h1>Jogo da Forca - HANGMAN</h1>
+</header>
 
-      <div class="right">
-        <div class="jogo">
-          <h1><strong>Vamos jogar!</strong></h1>
-          <div class="forca">
-  <div class="poste"></div>
-  <div class="trave"></div>
-  <div class="corda"></div>
-  <div class="cabeca"></div>
-  <div class="corpo"></div>
-  <div class="braco-esq"></div>
-  <div class="braco-dir"></div>
-  <div class="perna-esq"></div>
-  <div class="perna-dir"></div>
-</div>
-        
-          <button onclick="abrirModal()">🚪 Sair</button>
-        </div>
-      </div>
-    </main>
+<main>
 
-    <footer>
-      <h3>Divirta-se! 😎 Criadora: Sabrina Rodrigues 😎</h3>
-    </footer>
+  <!-- LEFT -->
+  <div class="left">
+    <div class="cats">
+      <button onclick="categoria(1)">🚗 Carro</button>
+      <button onclick="categoria(2)">🎥 Filme</button>
+      <button onclick="categoria(3)">🍒 Fruta</button>
+      <button onclick="categoria(4)">👗 Roupa</button>
+    </div>
+
+    <div id="chancesInfo">Chances: 6</div>
+
+    <div id="displayWord" class="word">_ _ _</div>
+
+    <div id="letrasTentadas">Letras tentadas: —</div>
+
+    <div class="input-row">
+      <input id="inputLetra" maxlength="1" placeholder="Letra">
+      <button id="btnGuess">OK</button>
+    </div>
+
+    <div id="resultado" class="result"></div>
+
+    <button class="recomecar" onclick="iniciarNovoJogo()">Recomeçar jogo</button>
   </div>
 
+  <!-- RIGHT -->
+  <div class="right">
+    <div class="forca-area">
+      <div class="gallows">
+        <div class="poste"></div>
+        <div class="trave"></div>
+        <div class="corda"></div>
 
-  <div class="modal" id="modalFinal">
-    <div class="modal-content">
-      <h2>🏁 Placar Final</h2>
-      <p id="placarFinal"></p>
-      <h3>Deseja jogar novamente?</h3>
-      <button onclick="jogarNovamente()">🔁 Jogar novamente</button>
-      <button onclick="encerrarJogo()">❌ Fechar jogo</button>
+        <div class="part cabeca" id="p0"></div>
+        <div class="part corpo" id="p1"></div>
+        <div class="part braco-esq" id="p2"></div>
+        <div class="part braco-dir" id="p3"></div>
+        <div class="part perna-esq" id="p4"></div>
+        <div class="part perna-dir" id="p5"></div>
+      </div>
     </div>
   </div>
 
-  <div id="mensagemFinal">
-    <p>🏁 Obrigado(a) por jogar!<br>Até a próxima! 😍</p>
+</main>
+
+</div>
+
+
+<!-- MODAL PLACAR -->
+<div id="modalPlacar" class="modal">
+  <div class="card">
+    <h2>🏁 Resultado</h2>
+    <p id="placarTexto"></p>
+    <div class="modal-buttons">
+    <button id="fecharModal">Fechar</button>
+    <button id="reiniciar" onclick="location.reload()">Reiniciar jogo</button>
+</div>
+
   </div>
+</div>
 
-  <script>
-    
-    const modal = document.getElementById("modalFinal");
-    const placarFinal = document.getElementById("placarFinal");
-    const mensagemFinal = document.getElementById("mensagemFinal");
-   
-    let vitorias = 0;
-    let derrotas = 0;
-    let podeJogar = true;
-function game() {
-  alert("Bem-vindo ao jogo da forca!");
 
-  while (true) {
+<script>
+let palavrasCategorias={
+  1:['FUSCA','GOL','UNO','ONIX','KA','FERRARI'],
+  2:['DEADPOOL','TITANIC','SHREK','TUBARAO'],
+  3:['BANANA','MACA','LARANJA','MORANGO'],
+  4:['CAMISA','VESTIDO','JAQUETA','TERNO']
+};
 
-    let opcao = prompt(`
-Escolha a categoria:
-[1] Carros
-[2] Filmes
-[3] Frutas
-[4] Roupas
-`);
+let palavraAtual="";
+let letraLista=[];
+let tabuleiro=[];
+let chances=6;
+let tentadas=[];
+let vitorias=0;
+let derrotas=0;
+let categoriaAtual=null;
+let jogoAtivo=false;
 
-    opcao = Number(opcao);
+const p = [...Array(6).keys()].map(i=>document.getElementById("p"+i));
 
-    let palavras = [];
+document.getElementById("btnGuess").onclick=()=>{
+  let inp=document.getElementById("inputLetra");
+  let l=inp.value.toUpperCase();
+  inp.value="";
+  tentar(l);
+};
 
-    if (opcao === 1) {
-      palavras = ['FUSCA', 'VOLKSWAGENGOL', 'FIATUNO', 'CHEVROLETONIX', 'FORDKA', 'RENAULTKWID', 'TOYOTAETIOS', 'NISSANMARCH', 'CHEVROLETPRISMA','FERRARI','JAGAR','LAMBORGHINI', 'ALFAROMEO', 'FIATARGO'];
-    } 
-    else if (opcao === 2) {
-      palavras = ['DEADPOOL','OCHAMADO','AMALDICAO','BATERECORRER','POLTERGEIST','ORGULHOEPRECONCEITO','ACOLINAESCARLATE','TITANIC','EOVENTOLEVOU','CASANOVA','ZORRO','DRACULA','HARRYPOTTEREAPEDRAFILOSOFAL','STARTREK','STARWAR','SHERK','AFREIRA','AFANTÁSTICAFÁBRICADECHOCOLATE','TUBARÃO'];
-    } 
-    else if (opcao === 3) {
-      palavras = ['BANANA','MACA','MELANCIA','ABRICO','AMEIXA','JACA','PESSEGO','MARMELO','PERA','LARANJA','CACAU','CAJU','ABACATE','MORANGO','ABACAXI','PINHA','MAMAO','KIWI','LIMAO'];
-    } 
-    else if (opcao === 4) {
-      palavras = ['CAMISA','CAMISETA','GRAVATA','TERNO','SOBRETUDO','CUECA','CALCINHA','SUTIA','SAIA','JAQUETA','CACHECOL','CALÇA','CASACO','VESTIDO','SHORT','PIJAMA','MEIAS','MEIACALCA'];
-    } 
-    else {
-      alert("Opção inválida!");
-      continue;
-    }
+function categoria(c){
+  categoriaAtual=c;
+  iniciarNovoJogo();
+}
 
-    const palavra = palavras[Math.floor(Math.random() * palavras.length)];
-    const listaLetras = palavra.split("");
-    const tabuleiro = Array(palavra.length).fill("_");
-    let chances = 6;
-    const letrasTentadas = [];
+function iniciarNovoJogo(){
+  if(!categoriaAtual) return;
 
-    while (chances > 0) {
+  const lista=palavrasCategorias[categoriaAtual];
+  palavraAtual=lista[Math.floor(Math.random()*lista.length)];
+  letraLista=palavraAtual.split("");
+  tabuleiro=letraLista.map(l=>"_");
+  tentadas=[];
+  chances=6;
+  jogoAtivo=true;
 
-      console.clear();
-      console.log(displayHangman(chances));
-      console.log("Palavra:", tabuleiro.join(" "));
+  atualizar();
+  esconderPartes();
+}
 
-      let tentativa = prompt("Digite uma letra: ").toUpperCase();
+function atualizar(){
+  document.getElementById("displayWord").textContent=tabuleiro.join(" ");
+  document.getElementById("chancesInfo").textContent="Chances: "+chances;
+  document.getElementById("letrasTentadas").textContent= tentadas.length? "Letras tentadas: "+tentadas.join(", ") : "Letras tentadas: —";
+}
 
-      if (!tentativa || tentativa.length !== 1) {
-        alert("Digite apenas uma letra!");
-        continue;
-      }
+function tentar(l){
+  if(!jogoAtivo) return;
+  if(!l || !/^[A-Z]$/.test(l)) return;
 
-      if (letrasTentadas.includes(tentativa)) {
-        alert("Você já tentou essa letra!");
-        continue;
-      }
+  if(tentadas.includes(l)) return;
 
-      letrasTentadas.push(tentativa);
+  tentadas.push(l);
 
-      if (listaLetras.includes(tentativa)) {
-        alert("Você acertou!");
-
-        listaLetras.forEach((letra, i) => {
-          if (letra === tentativa) tabuleiro[i] = letra;
-        });
-
-        if (!tabuleiro.includes("_")) {
-          alert("Você venceu! A palavra era: " + palavra);
-          break;
-        }
-
-      } else {
-        alert("Ops! Letra errada!");
-        chances--;
-      }
-    }
-
-    if (tabuleiro.includes("_")) {
-      alert("Você perdeu! A palavra era: " + palavra);
-    }
-
-    let resp = prompt("Quer continuar? [S/N]").toUpperCase();
-    if (resp === "N") break;
+  if(letraLista.includes(l)){
+    letraLista.forEach((x,i)=>{if(x===l) tabuleiro[i]=l;});
+  }else{
+    chances--;
+    mostrarParte(6-chances-1);
   }
-} 
-  
-    function abrirModal() {
-     
-      placarFinal.innerHTML = `
-        🥇 Vitórias: ${vitorias}<br>      
-        💔 Derrotas: ${derrotas}      `;
-      modal.style.display = "flex";
-    }
 
-    function jogarNovamente() {
-     function jogarNovamente() {
-  vitorias = 0;
-  derrotas = 0;
-  document.getElementById("resultado").innerHTML = "";
-  modal.style.display = "none";
+  atualizar();
+  checar();
 }
-     
 
-    function encerrarJogo() {
-     function encerrarJogo() {
-  modal.style.display = "none";
-  podeJogar = false;
-  document.querySelectorAll(".jogada").forEach(btn => btn.disabled = true);
-  mensagemFinal.style.display = "flex";
+function checar(){
+  if(!tabuleiro.includes("_")){
+    vitorias++;
+    jogoAtivo=false;
+    abrirModal("Você venceu!\nVitórias: "+vitorias+"\nDerrotas: "+derrotas);
+  }
+
+  if(chances<=0){
+    derrotas++;
+    jogoAtivo=false;
+    tabuleiro=[...letraLista];
+    atualizar();
+    abrirModal("Você perdeu!\nA palavra era: "+palavraAtual+
+               "\n\nVitórias: "+vitorias+"\nDerrotas: "+derrotas);
+  }
 }
-    
-  </script>
+
+function mostrarParte(i){
+  if(p[i]) p[i].classList.add("show");
+}
+
+function esconderPartes(){
+  p.forEach(x=>x.classList.remove("show"));
+}
+
+function abrirModal(texto){
+  document.getElementById("placarTexto").innerText=texto;
+  document.getElementById("modalPlacar").style.display="flex";
+}
+
+function fecharModal(){
+  document.getElementById("modalPlacar").style.display="none";
+}
+function recomecarJogo() {
+  location.reload();
+}
+</script>
 </body>
 </html>
-
-
-
