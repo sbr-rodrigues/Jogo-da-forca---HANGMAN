@@ -3,7 +3,7 @@
 Um jogo clássico da forca totalmente recriado em HTML, CSS e JavaScript, com uma interface moderna, categorias temáticas e animações visuais. Ideal para praticar vocabulário e se divertir!
 
 ### 📸 Preview
-![Jogo da Forca](https://user-images.githubusercontent.com/sbr-rodrigues/imagem-preview.png)  
+![Jogo da Forca](https://raw.githubusercontent.com/sbr-rodrigues/Jogo-da-forca---HANGMAN/refs/heads/main/media/icon%20hangman.png)  
 *Interface com categorias, animação do boneco e fundo em vídeo.*
 
 ---
@@ -37,7 +37,7 @@ Um jogo clássico da forca totalmente recriado em HTML, CSS e JavaScript, com um
 - HTML5
 - CSS3
 - JavaScript (Vanilla)
-- Fonte: [Poppins](https://fonts.google.com/specimen/Poppins)
+- Fonte: [YouTube]([https://fonts.google.com/specimen/Poppins)](https://www.youtube.com/watch?v=ZVuToMilP0A&list=RDZVuToMilP0A&start_radio=1)
 - Vídeo de fundo (opcional): `media/jack.mp4`
 
 ---
@@ -66,8 +66,5 @@ Sinta-se à vontade para abrir issues, enviar sugestões ou fazer um fork para m
 
 ---
 
-### 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
