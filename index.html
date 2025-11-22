@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo da Forca</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <video id="bg-video" autoplay muted loop playsinline>
+  <source src="media/jack.mp4" type="video/mp4">
+</video>
+<div class="container">
+<header>
+  <h1>Jogo da Forca - HANGMAN</h1>
+</header>
+<main>
+  <div class="left">
+    <div class="cats">
+      <button class="categoria" onclick="selecionarCategoria(this, 'carro')">🚗 CARRO</button>
+      <button class="categoria" onclick="selecionarCategoria(this, 'filme')">🎥 FILME</button>
+      <button class="categoria" onclick="selecionarCategoria(this, 'frutas')">🍒 FRUTAS</button>
+      <button class="categoria" onclick="selecionarCategoria(this, 'roupas')">👗 ROUPAS</button>
+    </div>
+
+    <div id="displayWord" class="word"></div>
+    <div id="letrasTentadas">Letras tentadas: </div>
+
+    <div class="input-row">
+      <input id="inputLetra" maxlength="1" placeholder="Letra">
+      <button id="btnGuess">OK</button>
+    </div>
+
+    <div id="resultado" class="result"></div>
+        <button class="recomecar" onclick="iniciarNovoJogo()">Recomeçar jogo</button>
+  </div>
+
+  <div class="right">
+    <div class="forca-area">
+      <div class="gallows">
+        <div class="poste"></div>
+        <div class="trave"></div>
+        <div class="corda"></div>
+        <div class="part cabeca" id="p0"></div>
+        <div class="part corpo" id="p1"></div>
+        <div class="part braco-esq" id="p2"></div>
+        <div class="part braco-dir" id="p3"></div>
+        <div class="part perna-esq" id="p4"></div>
+        <div class="part perna-dir" id="p5"></div>
+      </div>
+    </div>
+  </div>
+</main>
+</div>
+<div id="modalPlacar" class="modal">
+  <div class="card">
+    <h2>🏁 Resultado</h2>
+    <p id="placarTexto"></p>
+    <div class="modal-buttons">
+    <button id="fecharModal" onclick="fecharModal()">Fechar</button>
+    </div>
+  </div>
+</div>
+  <script src="script.js"></script>
+</body>
+</html>
